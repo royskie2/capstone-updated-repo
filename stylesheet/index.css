@@ -343,7 +343,8 @@ header {
 /* Hero Section */
 .hero {
   position: relative;
-  background-image: url("/picture/herobg.jpg");
+  /* Remove or comment out this line: */
+  /* background-image: url("/picture/herobg.jpg"); */
   background-size: cover;
   background-position: center;
   color: var(--white);
@@ -351,7 +352,6 @@ header {
   text-align: center;
   overflow: hidden;
 }
-
 /* Black overlay div with opacity */
 .hero::after {
   content: "";
