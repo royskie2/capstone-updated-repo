@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VendorRoute - Settings</title>   
+    <link rel="stylesheet" href="stylesheet/settings.css" />
+    <link rel="stylesheet" href="stylesheet/dashboard.css">
+  </head>
+  <body>
+    <header>
+        <div class="container">
+          <nav class="navbar">
+            <!-- Mobile menu button - now on the left -->
+            <div class="burger" id="mobileMenuToggle">≡</div>
+  
+            <!-- Logo in the center on mobile -->
+            <a href="index.html" class="logo">
+              <span class="logo-img">🚚</span>
+              <span>VendorRoute</span>
+            </a>
+  
+            <!-- Empty div to help with grid layout on mobile -->
+            <div></div>
+          </nav>
+        </div>
+      </header>
+  
+      <!-- Dashboard -->
+      <main class="dashboard-page">
+        <div class="container">
+          <div class="dashboard-header">
+            <h1>Settings</h1>
+            <div class="user-profile">
+              <div class="user-avatar">CJ</div>
+              <div class="user-info">
+                <span class="user-name">Crystal Joy Cantos</span>
+                <span class="user-role">Coffee Vendor</span>
+              </div>
+            </div>
+          </div>
+  
+          <div class="dashboard-grid">
+            <!-- Sidebar - Integrated navigation -->
+            <aside class="sidebar" id="sidebar">
+              <ul class="sidebar-menu">
+                <li>
+                  <a href="dashboard.html"><i>📊</i> Dashboard</a>
+                </li>
+                <li>
+                  <a href="business_setup.html"><i>🏪</i> Business Setup</a>
+                </li>
+                <li>
+                  <a href="#route-planning"><i>🗺️</i> Route Planning</a>
+                </li>
+                <li>
+                  <a href="#location-analytics"><i>📍</i> Location Analytics</a>
+                </li>
+                <li>
+                  <a href="#sales-tracking"><i>📈</i> Sales Tracking</a>
+                </li>
+                <li>
+                  <a href="#weather-forecast"><i>☁️</i> Weather Forecast</a>
+                </li>
+              </ul>
+  
+              <div class="sidebar-divider"></div>
+  
+              <ul class="sidebar-menu">
+                <li>
+                  <a href="#customer-insights"><i>👥</i> Customer Insights</a>
+                </li>
+                <li>
+                  <a href="#ai-recommendations"><i>🤖</i> AI Recommendations</a>
+                </li>
+                <li>
+                  <a href="#dynamic-pricing"><i>💰</i> Dynamic Pricing</a>
+                </li>
+                <li>
+                  <a href="settings.html"  class="active"><i>⚙️</i> Settings</a>
+                </li>
+                <li>
+                  <a href="#help-center"><i>❓</i> Help Center</a>
+                </li>
+                <li>
+                  <a href="index.html"><i>🏠</i>Log Out</a>
+                </li>
+              </ul>
+            </aside>
+        <div class="settings-grid">
+          <!-- Profile Settings -->
+          <div class="settings-section">
+            <div class="settings-header">
+              <h2>Profile Information</h2>
+              <button class="btn btn-primary btn-sm">Edit Profile</button>
+            </div>
+            <div class="settings-content">
+              <div class="profile-detail">
+                <span class="detail-label">Full Name</span>
+                <span class="detail-value">Crystal Joy Cantos</span>
+              </div>
+              <div class="profile-detail">
+                <span class="detail-label">Email</span>
+                <span class="detail-value">crystal.cantos@vendorroute.com</span>
+              </div>
+              <div class="profile-detail">
+                <span class="detail-label">Phone</span>
+                <span class="detail-value">+63 917 555 1234</span>
+              </div>
+              <div class="profile-detail">
+                <span class="detail-label">Business Name</span>
+                <span class="detail-value">Crystal's Mobile Coffee</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Account Security -->
+          <div class="settings-section">
+            <div class="settings-header">
+              <h2>Account Security</h2>
+              <button class="btn btn-secondary btn-sm">Change Password</button>
+            </div>
+            <div class="settings-content">
+              <div class="security-options">
+                <div class="security-option">
+                  <span>Two-Factor Authentication</span>
+                  <div class="toggle-switch">
+                    <input type="checkbox" id="2fa-toggle" checked>
+                    <label for="2fa-toggle"></label>
+                  </div>
+                </div>
+                <div class="security-option">
+                  <span>Login Notifications</span>
+                  <div class="toggle-switch">
+                    <input type="checkbox" id="login-notify" checked>
+                    <label for="login-notify"></label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Notification Preferences -->
+          <div class="settings-section">
+            <div class="settings-header">
+              <h2>Notification Preferences</h2>
+              <button class="btn btn-light btn-sm">Manage</button>
+            </div>
+            <div class="settings-content">
+              <div class="notification-options">
+                <div class="notification-option">
+                  <span>Sales Alerts</span>
+                  <div class="toggle-switch">
+                    <input type="checkbox" id="sales-notify" checked>
+                    <label for="sales-notify"></label>
+                  </div>
+                </div>
+                <div class="notification-option">
+                  <span>Route Optimization Updates</span>
+                  <div class="toggle-switch">
+                    <input type="checkbox" id="route-notify" checked>
+                    <label for="route-notify"></label>
+                  </div>
+                </div>
+                <div class="notification-option">
+                  <span>Weekly Performance Summary</span>
+                  <div class="toggle-switch">
+                    <input type="checkbox" id="weekly-notify" checked>
+                    <label for="weekly-notify"></label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="settings-section">
+            <div class="settings-header">
+              <h2>Referral Program</h2>
+              <button class="btn btn-primary btn-sm">Invite Friends</button>
+            </div>
+            <div class="settings-content">
+              <div class="referral-details">
+                <div class="referral-stats">
+                  <span class="referral-count">Total Referrals: 5</span>
+                  <span class="referral-bonus">Earned Bonus: ₱500</span>
+                </div>
+                <div class="referral-description">
+                  <p>Invite your fellow vendors and earn rewards! Each successful referral gives you ₱100 credit.</p>
+                  <div class="referral-code">
+                    <span>Your Referral Code:</span>
+                    <strong>CRYSTAL-VENDOR-5678</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Danger Zone -->
+          <div class="settings-section danger-zone">
+            <div class="settings-header">
+              <h2>Danger Zone</h2>
+            </div>
+            <div class="settings-content">
+              <div class="danger-actions">
+                <button class="btn btn-danger btn-sm">Deactivate Account</button>
+                <button class="btn btn-light btn-sm">Delete Account</button>
+              </div>
+              <p class="danger-warning">
+                Caution: These actions are irreversible and will permanently remove your account and data.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="javascript/settings.js"></script>
+  </body>
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VendorRoute - Demo Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-color: #f4f4f4;
+        }
+        .stat-card {
+            transition: transform 0.3s ease;
+        }
+        .stat-card:hover {
+            transform: scale(1.05);
+        }
+        .location-card {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .location-card.selected {
+            border-color: #3B82F6;
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto p-6">
+        <div class="bg-white shadow-lg rounded-lg p-6">
+            <h1 class="text-3xl font-bold text-center mb-6 text-blue-600">
+                🚚 VendorRoute Demo Dashboard
+            </h1>
+
+            <!-- Date and Location Selection -->
+            <div class="flex justify-between items-center mb-6">
+                <div class="flex items-center space-x-4">
+                    <label class="font-semibold">Select Date:</label>
+                    <input 
+                        type="date" 
+                        id="dateSelector" 
+                        class="border rounded px-2 py-1"
+                        value="2025-03-24"
+                    >
+                </div>
+                <div class="text-right">
+                    <h2 class="text-xl font-semibold">Crystal Joy Cantos's Dashboard</h2>
+                    <p class="text-gray-600">Coffee Vendor in Baliuag</p>
+                </div>
+            </div>
+
+            <!-- Location Recommendations -->
+            <div class="grid grid-cols-3 gap-6 mb-6" id="locationContainer">
+                <div class="location-card border p-4 rounded-lg bg-white hover:bg-blue-50 transition-colors location" data-location="sm-baliuag">
+                    <div class="flex justify-between items-center mb-3">
+                        <h3 class="text-lg font-bold text-blue-600">SM Baliuag</h3>
+                        <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">Hot</span>
+                    </div>
+                    <p class="text-gray-600 mb-3">High foot traffic near mall entrance</p>
+                    <div class="grid grid-cols-3 gap-2 text-center">
+                        <div>
+                            <span class="block font-bold text-green-600">₱1,250</span>
+                            <span class="text-xs text-gray-500">Revenue</span>
+                        </div>
+                        <div>
+                            <span class="block font-bold text-blue-600">42</span>
+                            <span class="text-xs text-gray-500">Customers</span>
+                        </div>
+                        <div>
+                            <span class="block font-bold text-orange-600">9am-2pm</span>
+                            <span class="text-xs text-gray-500">Peak Hours</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="location-card border p-4 rounded-lg bg-white hover:bg-blue-50 transition-colors location" data-location="public-market">
+                    <div class="flex justify-between items-center mb-3">
+                        <h3 class="text-lg font-bold text-blue-600">Public Market</h3>
+                        <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">New</span>
+                    </div>
+                    <p class="text-gray-600 mb-3">Morning shoppers and nearby businesses</p>
+                    <div class="grid grid-cols-3 gap-2 text-center">
+                        <div>
+                            <span class="block font-bold text-green-600">₱980</span>
+                            <span class="text-xs text-gray-500">Revenue</span>
+                        </div>
+                        <div>
+                            <span class="block font-bold text-blue-600">35</span>
+                            <span class="text-xs text-gray-500">Customers</span>
+                        </div>
+                        <div>
+                            <span class="block font-bold text-orange-600">6am-11am</span>
+                            <span class="text-xs text-gray-500">Peak Hours</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="location-card border p-4 rounded-lg bg-white hover:bg-blue-50 transition-colors location" data-location="baliuag-university">
+                    <div class="flex justify-between items-center mb-3">
+                        <h3 class="text-lg font-bold text-blue-600">Baliuag University</h3>
+                        <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded text-xs">Trending</span>
+                    </div>
+                    <p class="text-gray-600 mb-3">Student hotspot with consistent afternoon sales</p>
+                    <div class="grid grid-cols-3 gap-2 text-center">
+                        <div>
+                            <span class="block font-bold text-green-600">₱850</span>
+                            <span class="text-xs text-gray-500">Revenue</span>
+                        </div>
+                        <div>
+                            <span class="block font-bold text-blue-600">28</span>
+                            <span class="text-xs text-gray-500">Customers</span>
+                        </div>
+                        <div>
+                            <span class="block font-bold text-orange-600">2pm-6pm</span>
+                            <span class="text-xs text-gray-500">Peak Hours</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Location Details and Recommendations -->
+            <div id="locationDetails" class="bg-white border rounded-lg p-6 hidden">
+                <h3 class="text-2xl font-bold mb-4" id="selectedLocationName"></h3>
+                <div class="grid grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="font-semibold mb-2">Location Insights</h4>
+                        <p id="locationDescription" class="text-gray-600 mb-4"></p>
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <h5 class="font-bold mb-2">🤖 AI Recommendations</h5>
+                            <p id="locationRecommendation" class="text-blue-800"></p>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-2">Performance Metrics</h4>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-green-50 p-3 rounded">
+                                <span class="block text-lg font-bold text-green-700" id="locationRevenue"></span>
+                                <span class="text-xs text-gray-600">Total Revenue</span>
+                            </div>
+                            <div class="bg-blue-50 p-3 rounded">
+                                <span class="block text-lg font-bold text-blue-700" id="locationCustomers"></span>
+                                <span class="text-xs text-gray-600">Total Customers</span>
+                            </div>
+                            <div class="bg-orange-50 p-3 rounded col-span-2">
+                                <span class="block text-lg font-bold text-orange-700" id="locationPeakHours"></span>
+                                <span class="text-xs text-gray-600">Peak Hours</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const locations = {
+                'sm-baliuag': {
+                    name: 'SM Baliuag',
+                    description: 'High foot traffic near mall entrance, ideal for morning coffee sales. Strategic location with consistent customer flow throughout the day.',
+                    revenue: '₱1,250',
+                    customers: 42,
+                    peakHours: '9am-2pm',
+                    recommendation: 'Focus on morning promotions. Consider setting up near the mall entrance for maximum visibility.'
+                },
+                'public-market': {
+                    name: 'Baliuag Public Market',
+                    description: 'Bustling market with morning shoppers and nearby businesses. Great for early morning sales and quick breakfast items.',
+                    revenue: '₱980',
+                    customers: 35,
+                    peakHours: '6am-11am',
+                    recommendation: 'Prepare light breakfast and coffee options. Arrive early to capture morning market crowd.'
+                },
+                'baliuag-university': {
+                    name: 'Baliuag University',
+                    description: 'Student-rich environment with consistent afternoon sales. Perfect for study-time snacks and refreshments.',
+                    revenue: '₱850',
+                    customers: 28,
+                    peakHours: '2pm-6pm',
+                    recommendation: 'Create student-friendly combo meals. Consider exam week specials and study-friendly menu items.'
+                }
+            };
+
+            const locationCards = document.querySelectorAll('.location-card');
+            const locationDetails = document.getElementById('locationDetails');
+            const selectedLocationName = document.getElementById('selectedLocationName');
+            const locationDescription = document.getElementById('locationDescription');
+            const locationRecommendation = document.getElementById('locationRecommendation');
+            const locationRevenue = document.getElementById('locationRevenue');
+            const locationCustomers = document.getElementById('locationCustomers');
+            const locationPeakHours = document.getElementById('locationPeakHours');
+
+            locationCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    // Remove selected class from all cards
+                    locationCards.forEach(c => c.classList.remove('selected'));
+                    
+                    // Add selected class to clicked card
+                    card.classList.add('selected');
+
+                    // Get location data
+                    const locationId = card.getAttribute('data-location');
+                    const location = locations[locationId];
+
+                    // Update location details
+                    selectedLocationName.textContent = location.name;
+                    locationDescription.textContent = location.description;
+                    locationRecommendation.textContent = location.recommendation;
+                    locationRevenue.textContent = location.revenue;
+                    locationCustomers.textContent = location.customers;
+                    locationPeakHours.textContent = location.peakHours;
+
+                    // Show location details
+                    locationDetails.classList.remove('hidden');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

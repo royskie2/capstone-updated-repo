@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VendorRoute Dashboard - Smart Route Planning for Food Vendors</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <link rel="stylesheet" href="stylesheet/dashboard.css" />
+    <style>
+           .optimization-section {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .optimization-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+      }
+
+      .optimization-title {
+        margin: 0;
+      }
+
+      .map-controls {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 15px;
+      }
+
+      .map-filters {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      #map {
+        height: 500px;
+        width: 100%;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        position: relative;
+      }
+
+      .route-summary {
+        padding: 15px;
+        background-color: #f8f9fa;
+        border-radius: 8px;
+      }
+
+      .btn {
+        padding: 8px 16px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+     
+     
+
+      .btn-light {
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+      }
+
+      .btn-sm {
+        padding: 4px 8px;
+        font-size: 0.875rem;
+      }
+
+     
+      .weather-info-box {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: rgba(255, 255, 255, 0.9);
+        padding: 10px;
+        border-radius: 4px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        z-index: 100;
+        max-width: 200px;
+      }
+
+      .map-status-bar {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        background: rgba(255, 255, 255, 0.8);
+        padding: 5px 10px;
+        border-radius: 4px;
+        font-size: 12px;
+        z-index: 100;
+      }
+
+      .info-window {
+        max-width: 250px;
+      }
+
+      .peak-hours {
+        margin-top: 5px;
+        padding: 3px 6px;
+        background-color: #fff3cd;
+        border-radius: 3px;
+        font-size: 0.85em;
+      }
+
+      .location-list {
+        margin-top: 15px;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+      }
+
+      .location-item {
+        padding: 10px 15px;
+        border-bottom: 1px solid #eee;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .location-item:hover {
+        background-color: #f5f5f5;
+      }
+
+      .location-item:last-child {
+        border-bottom: none;
+      }
+
+      .peak-tag {
+        font-size: 0.8em;
+        padding: 2px 6px;
+        border-radius: 12px;
+        background-color: #ffe0e0;
+        white-space: nowrap;
+      }
+
+      .density-legend {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        background: rgba(255, 255, 255, 0.9);
+        padding: 5px 10px;
+        border-radius: 4px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        z-index: 100;
+        font-size: 12px;
+        display: none;
+      }
+
+      .density-gradient {
+        height: 10px;
+        width: 150px;
+        margin: 5px 0;
+        background: linear-gradient(to right, green, yellow, orange, red);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="container">
+        <nav class="navbar">
+          <!-- Mobile menu button - now on the left -->
+          <div class="burger" id="mobileMenuToggle">≡</div>
+
+          <!-- Logo in the center on mobile -->
+          <a href="index.html" class="logo">
+            <span class="logo-img">🚚</span>
+            <span>VendorRoute</span>
+          </a>
+
+          <!-- Empty div to help with grid layout on mobile -->
+          <div></div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Dashboard -->
+    <main class="dashboard-page">
+      <div class="container">
+        <div class="dashboard-header">
+          <h1>Welcome back, Crystal!</h1>
+          <div class="user-profile">
+            <div class="user-avatar">CJ</div>
+            <div class="user-info">
+              <span class="user-name">Crystal Joy Cantos</span>
+              <span class="user-role">Coffee Vendor</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="dashboard-grid">
+          <!-- Sidebar - Integrated navigation -->
+          <aside class="sidebar" id="sidebar">
+            <ul class="sidebar-menu">
+              <li>
+                <a href="#dashboard" class="active"><i>📊</i> Dashboard</a>
+              </li>
+              <li>
+                <a href="business_setup.html"><i>🏪</i> Business Setup</a>
+              </li>
+              <li>
+                <a href="#route-planning"><i>🗺️</i> Route Planning</a>
+              </li>
+              <li>
+                <a href="#location-analytics"><i>📍</i> Location Analytics</a>
+              </li>
+              <li>
+                <a href="#sales-tracking"><i>📈</i> Sales Tracking</a>
+              </li>
+              <li>
+                <a href="#weather-forecast"><i>☁️</i> Weather Forecast</a>
+              </li>
+            </ul>
+
+            <div class="sidebar-divider"></div>
+
+            <ul class="sidebar-menu">
+              <li>
+                <a href="#customer-insights"><i>👥</i> Customer Insights</a>
+              </li>
+              <li>
+                <a href="#ai-recommendations"><i>🤖</i> AI Recommendations</a>
+              </li>
+              <li>
+                <a href="#dynamic-pricing"><i>💰</i> Dynamic Pricing</a>
+              </li>
+              <li>
+                <a href="settings.html"><i>⚙️</i> Settings</a>
+              </li>
+              <li>
+                <a href="#help-center"><i>❓</i> Help Center</a>
+              </li>
+              <li>
+                <a href="index.html"><i>🏠</i>Log Out</a>
+              </li>
+            </ul>
+          </aside>
+
+          <!-- Main Content Area -->
+          <div class="main-content">
+            <!-- Date Filter -->
+            <div class="date-filter" id="dashboard">
+              <div class="date-range">
+                <input type="date" class="date-input" value="2025-03-23" />
+                <span>to</span>
+                <input type="date" class="date-input" value="2025-03-30" />
+                <button class="btn btn-primary btn-sm">Apply</button>
+              </div>
+              <div class="quick-filters">
+                <button class="btn btn-light btn-sm">Today</button>
+                <button class="btn btn-light btn-sm">This Week</button>
+                <button class="btn btn-light btn-sm">This Month</button>
+                <button class="btn btn-light btn-sm">Custom</button>
+              </div>
+            </div>
+
+            <!-- Stats Summary -->
+            <div class="stats-cards">
+              <div class="stat-card">
+                <div class="stat-header">
+                  <span class="stat-title">Daily Revenue</span>
+                  <span class="stat-icon">💰</span>
+                </div>
+                <div class="stat-value">₱3,250</div>
+                <div class="stat-change positive">
+                  <span>↑ 15.2%</span> vs yesterday
+                </div>
+              </div>
+
+              <div class="stat-card">
+                <div class="stat-header">
+                  <span class="stat-title">Customers</span>
+                  <span class="stat-icon">👥</span>
+                </div>
+                <div class="stat-value">95</div>
+                <div class="stat-change positive">
+                  <span>↑ 8.6%</span> vs yesterday
+                </div>
+              </div>
+
+              <div class="stat-card">
+                <div class="stat-header">
+                  <span class="stat-title">Avg. Order Value</span>
+                  <span class="stat-icon">📊</span>
+                </div>
+                <div class="stat-value">₱34.20</div>
+                <div class="stat-change positive">
+                  <span>↑ 5.3%</span> vs yesterday
+                </div>
+              </div>
+
+              <div class="stat-card">
+                <div class="stat-header">
+                  <span class="stat-title">Total Distance</span>
+                  <span class="stat-icon">🗺️</span>
+                </div>
+                <div class="stat-value">4.8km</div>
+                <div class="stat-change negative">
+                  <span>↓ 6.5%</span> vs yesterday
+                </div>
+              </div>
+            </div>
+
+           <!-- Map & Route Planning Section -->
+    <div class="optimization-section" id="route-planning">
+      <div class="optimization-header">
+        <h2 class="optimization-title">
+          Smart Route Planning - Baliuag, Bulacan
+        </h2>
+        <button id="generateRouteBtn" class="btn btn-primary">
+          Generate Optimal Route
+        </button>
+      </div>
+
+      <div class="map-controls">
+        <div class="map-filters">
+          <button id="myLocationBtn" class="btn btn-light btn-sm">
+            My Current Location
+          </button>
+          <button id="optimalRouteBtn" class="btn btn-light btn-sm">
+            Optimal Route
+          </button>
+          <button id="densityBtn" class="btn btn-light btn-sm">
+            High Density Areas
+          </button>
+          <button id="weatherBtn" class="btn btn-light btn-sm">
+            Weather Overlay
+          </button>
+          <button id="trafficBtn" class="btn btn-light btn-sm">
+            Traffic Overlay
+          </button>
+        </div>
+        <button id="saveRouteBtn" class="btn btn-secondary btn-sm">
+          Save Route
+        </button>
+      </div>
+
+      <div id="map">
+        <div id="densityLegend" class="density-legend">
+          <div>Density Legend</div>
+          <div class="density-gradient"></div>
+          <div style="display: flex; justify-content: space-between">
+            <span>Low</span>
+            <span>High</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="location-list" id="suggestionsList">
+        <h3 style="padding: 10px 15px; margin: 0; background-color: #f8f9fa">
+          Suggested Locations
+        </h3>
+        <!-- Will be populated with location items -->
+      </div>
+
+      <div id="routeSummary" class="route-summary"></div>
+    </div>
+
+    <!-- Load Google Maps JavaScript API -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAakyzAs5xRwuLrJB4CkABxSRJ7nGtR5R4&libraries=visualization"></script>
+
+
+            <!-- Charts & Analytics -->
+            <div class="data-section" id="sales-tracking">
+              <div class="chart-container">
+                <div class="chart-header">
+                  <h3 class="chart-title">Sales by Location</h3>
+                  <div class="chart-actions">
+                    <button class="btn btn-light btn-sm">Week</button>
+                    <button class="btn btn-light btn-sm">Month</button>
+                    <button class="btn btn-light btn-sm">Quarter</button>
+                  </div>
+                </div>
+                <div class="chart-content">
+                  <canvas id="salesChart"></canvas>
+                </div>
+              </div>
+
+              <div class="chart-container">
+                <div class="chart-header">
+                  <h3 class="chart-title">Popular Products</h3>
+                  <div class="chart-actions">
+                    <button class="btn btn-light btn-sm">All</button>
+                    <button class="btn btn-light btn-sm">Coffee</button>
+                    <button class="btn btn-light btn-sm">Food</button>
+                  </div>
+                </div>
+                <div class="chart-content">
+                  <canvas id="productsChart"></canvas>
+                </div>
+              </div>
+            </div>
+
+            <!-- Location Suggestions -->
+            <div class="location-suggestions" id="location-analytics">
+              <div class="suggestion-header">
+                <h3 class="suggestion-title">
+                  Top Locations in Baliuag
+                  <span class="badge badge-ai">AI Powered</span>
+                </h3>
+                <button class="btn btn-primary btn-sm">
+                  View All Locations
+                </button>
+              </div>
+
+              <div class="suggestion-cards">
+                <div class="suggestion-card">
+                  <div class="suggestion-location">
+                    <span>SM Baliuag Area</span>
+                    <span class="badge badge-hot">HOT</span>
+                  </div>
+                  <p>
+                    High foot traffic near mall entrance, ideal for morning
+                    coffee sales.
+                  </p>
+                  <div class="weather-info">
+                    <span>☀️</span>
+                    <span>30°C</span>
+                  </div>
+                  <div class="suggestion-stats">
+                    <div class="suggestion-stat">
+                      <span class="suggestion-value">₱1,250</span>
+                      <span class="suggestion-label">Avg. Revenue</span>
+                    </div>
+                    <div class="suggestion-stat">
+                      <span class="suggestion-value">42</span>
+                      <span class="suggestion-label">Customers</span>
+                    </div>
+                    <div class="suggestion-stat">
+                      <span class="suggestion-value">9am-2pm</span>
+                      <span class="suggestion-label">Peak Hours</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="suggestion-card">
+                  <div class="suggestion-location">
+                    <span>Baliuag Public Market</span>
+                    <span class="badge badge-new">NEW</span>
+                  </div>
+                  <p>
+                    High potential area with morning shoppers and nearby
+                    businesses.
+                  </p>
+                  <div class="weather-info">
+                    <span>⛅</span>
+                    <span>29°C</span>
+                  </div>
+                  <div class="suggestion-stats">
+                    <div class="suggestion-stat">
+                      <span class="suggestion-value">₱980</span>
+                      <span class="suggestion-label">Avg. Revenue</span>
+                    </div>
+                    <div class="suggestion-stat">
+                      <span class="suggestion-value">35</span>
+                      <span class="suggestion-label">Customers</span>
+                    </div>
+                    <div class="suggestion-stat">
+                      <span class="suggestion-value">6am-11am</span>
+                      <span class="suggestion-label">Peak Hours</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="suggestion-card">
+                  <div class="suggestion-location">
+                    <span>Baliuag University</span>
+                  </div>
+                  <p>
+                    Student hotspot with consistent afternoon sales during
+                    weekdays.
+                  </p>
+                  <div class="weather-info">
+                    <span>☀️</span>
+                    <span>31°C</span>
+                  </div>
+                  <div class="suggestion-stats">
+                    <div class="suggestion-stat">
+                      <span class="suggestion-value">₱850</span>
+                      <span class="suggestion-label">Avg. Revenue</span>
+                    </div>
+                    <div class="suggestion-stat">
+                      <span class="suggestion-value">28</span>
+                      <span class="suggestion-label">Customers</span>
+                    </div>
+                    <div class="suggestion-stat">
+                      <span class="suggestion-value">2pm-6pm</span>
+                      <span class="suggestion-label">Peak Hours</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Historical Performance -->
+            <div class="historical-section">
+              <div class="historical-header">
+                <h3 class="historical-title">Historical Performance</h3>
+                <button class="btn btn-light btn-sm">Download Report</button>
+              </div>
+
+              <div class="performance-grid">
+                <div class="performance-card">
+                  <div class="performance-location">Baliuag Plaza</div>
+                  <div class="performance-metric">₱38,450</div>
+                  <div class="performance-label">Total Revenue (Q1)</div>
+                </div>
+
+                <div class="performance-card">
+                  <div class="performance-location">SM Baliuag</div>
+                  <div class="performance-metric">₱45,820</div>
+                  <div class="performance-label">Total Revenue (Q1)</div>
+                </div>
+
+                <div class="performance-card">
+                  <div class="performance-location">Public Market</div>
+                  <div class="performance-metric">₱29,750</div>
+                  <div class="performance-label">Total Revenue (Q1)</div>
+                </div>
+
+                <div class="performance-card">
+                  <div class="performance-location">Maharlika Highway</div>
+                  <div class="performance-metric">₱31,200</div>
+                  <div class="performance-label">Total Revenue (Q1)</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Weather Forecast -->
+            <div class="ai-recommendations" id="weather-forecast">
+              <div class="recommendations-header">
+                <h3 class="recommendations-title">
+                  Baliuag Weather Forecast
+                  <span class="badge badge-ai">Live Data</span>
+                </h3>
+                <button class="btn btn-primary btn-sm">
+                  Detailed Forecast
+                </button>
+              </div>
+
+              <div class="recommendation-cards">
+                <div class="recommendation-card">
+                  <div class="recommendation-title">
+                    <span>☀️</span>
+                    <span>Monday, March 24</span>
+                  </div>
+                  <div class="recommendation-content">
+                    <p>
+                      Sunny with occasional clouds. Temperature 29-32°C. Perfect
+                      weather for iced coffee sales in Baliuag Plaza and SM
+                      areas.
+                    </p>
+                  </div>
+                  <div class="recommendation-actions">
+                    <button class="btn btn-light btn-sm">See Hourly</button>
+                  </div>
+                </div>
+
+                <div class="recommendation-card">
+                  <div class="recommendation-title">
+                    <span>🌧️</span>
+                    <span>Tuesday, March 25</span>
+                  </div>
+                  <div class="recommendation-content">
+                    <p>
+                      Afternoon thunderstorms expected around Baliuag.
+                      Temperature 27-30°C. Plan for covered locations near
+                      Baliuag University and SM Baliuag.
+                    </p>
+                  </div>
+                  <div class="recommendation-actions">
+                    <button class="btn btn-light btn-sm">See Hourly</button>
+                  </div>
+                </div>
+
+                <div class="recommendation-card">
+                  <div class="recommendation-title">
+                    <span>⛅</span>
+                    <span>Wednesday, March 26</span>
+                  </div>
+                  <div class="recommendation-content">
+                    <p>
+                      Partly cloudy with high humidity. Temperature 28-31°C.
+                      Good day for both hot and cold beverages in all Baliuag
+                      locations.
+                    </p>
+                  </div>
+                  <div class="recommendation-actions">
+                    <button class="btn btn-light btn-sm">See Hourly</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- AI Recommendations -->
+            <div class="ai-recommendations" id="ai-recommendations">
+              <div class="recommendations-header">
+                <h3 class="recommendations-title">
+                  <span>🤖</span>
+                  AI Recommendations
+                </h3>
+                <button class="btn btn-primary btn-sm">View All</button>
+              </div>
+
+              <div class="recommendation-cards">
+                <div class="recommendation-card">
+                  <div class="recommendation-title">
+                    <span>📍</span>
+                    <span>Expand to Eastern Baliuag</span>
+                  </div>
+                  <div class="recommendation-content">
+                    <p>
+                      Data shows increasing residential development in Eastern
+                      Baliuag near Tarcan area. Consider adding a morning route
+                      through this neighborhood on Thursdays and Saturdays.
+                    </p>
+                  </div>
+                  <div class="recommendation-actions">
+                    <button class="btn btn-secondary btn-sm">
+                      Apply to Route
+                    </button>
+                    <div class="ai-confidence">
+                      <span>AI Confidence: 87%</span>
+                      <div class="confidence-indicator">
+                        <div class="confidence-level" style="width: 87%"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="recommendation-card">
+                  <div class="recommendation-title">
+                    <span>🏫</span>
+                    <span>Focus on Baliuag University</span>
+                  </div>
+                  <div class="recommendation-content">
+                    <p>
+                      Student sales increased by 28% during final exam weeks.
+                      Next exam period starts April 15th. Consider special
+                      student promotions and extended hours.
+                    </p>
+                  </div>
+                  <div class="recommendation-actions">
+                    <button class="btn btn-secondary btn-sm">
+                      Apply to Route
+                    </button>
+                    <div class="ai-confidence">
+                      <span>AI Confidence: 92%</span>
+                      <div class="confidence-indicator">
+                        <div class="confidence-level" style="width: 92%"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="recommendation-card">
+                  <div class="recommendation-title">
+                    <span>🛒</span>
+                    <span>New Product Suggestion</span>
+                  </div>
+                  <div class="recommendation-content">
+                    <p>
+                      Local food trend analysis shows growing demand for
+                      ube-flavored drinks in Baliuag. Consider adding Ube Latte
+                      to your menu to increase revenue by an estimated 12%.
+                    </p>
+                  </div>
+                  <div class="recommendation-actions">
+                    <button class="btn btn-secondary btn-sm">
+                      View Details
+                    </button>
+                    <div class="ai-confidence">
+                      <span>AI Confidence: 78%</span>
+                      <div class="confidence-indicator">
+                        <div class="confidence-level" style="width: 78%"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Dynamic Pricing -->
+            <div class="dynamic-pricing" id="dynamic-pricing">
+              <div class="pricing-header">
+                <h3 class="pricing-title">
+                  <span>💰</span>
+                  Dynamic Pricing Suggestions
+                </h3>
+                <button class="btn btn-primary btn-sm">Apply All</button>
+              </div>
+
+              <div class="pricing-cards">
+                <div class="pricing-card">
+                  <div class="pricing-product">Iced Latte</div>
+                  <div class="current-price">₱95.00</div>
+                  <div class="suggested-price">₱105.00</div>
+                  <div class="price-reasoning">
+                    High demand at Baliuag University
+                  </div>
+                </div>
+
+                <div class="pricing-card">
+                  <div class="pricing-product">Hot Cappuccino</div>
+                  <div class="current-price">₱90.00</div>
+                  <div class="suggested-price">₱85.00</div>
+                  <div class="price-reasoning">
+                    Low demand due to hot weather
+                  </div>
+                </div>
+
+                <div class="pricing-card">
+                  <div class="pricing-product">Chocolate Frappe</div>
+                  <div class="current-price">₱120.00</div>
+                  <div class="suggested-price">₱135.00</div>
+                  <div class="price-reasoning">Popular at SM Baliuag</div>
+                </div>
+
+                <div class="pricing-card">
+                  <div class="pricing-product">Pandesal Sandwich</div>
+                  <div class="current-price">₱65.00</div>
+                  <div class="suggested-price">₱70.00</div>
+                  <div class="price-reasoning">Popular breakfast item</div>
+                </div>
+
+                <div class="pricing-card">
+                  <div class="pricing-product">Ensaymada</div>
+                  <div class="current-price">₱45.00</div>
+                  <div class="suggested-price">₱50.00</div>
+                  <div class="price-reasoning">High margin opportunity</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Customer Insights -->
+            <div class="ai-recommendations" id="customer-insights">
+              <div class="recommendations-header">
+                <h3 class="recommendations-title">
+                  <span>👥</span>
+                  Customer Insights - Baliuag
+                </h3>
+                <button class="btn btn-primary btn-sm">View Details</button>
+              </div>
+
+              <div class="recommendation-cards">
+                <div class="recommendation-card">
+                  <div class="recommendation-title">
+                    <span>🎯</span>
+                    <span>Customer Demographics</span>
+                  </div>
+                  <div class="recommendation-content">
+                    <p>
+                      Your top customers in Baliuag are college students (35%),
+                      office workers (28%), and market vendors (22%). Focus
+                      marketing on these groups for best results.
+                    </p>
+                  </div>
+                  <div class="recommendation-actions">
+                    <button class="btn btn-light btn-sm">
+                      See Full Report
+                    </button>
+                  </div>
+                </div>
+
+                <div class="recommendation-card">
+                  <div class="recommendation-title">
+                    <span>🔄</span>
+                    <span>Repeat Customer Rate</span>
+                  </div>
+                  <div class="recommendation-content">
+                    <p>
+                      Your repeat customer rate in Baliuag Plaza area is 68%,
+                      which is 12% higher than other locations. Consider loyalty
+                      rewards for these customers.
+                    </p>
+                  </div>
+                  <div class="recommendation-actions">
+                    <button class="btn btn-light btn-sm">
+                      See Full Report
+                    </button>
+                  </div>
+                </div>
+
+                <div class="recommendation-card">
+                  <div class="recommendation-title">
+                    <span>💬</span>
+                    <span>Customer Feedback</span>
+                  </div>
+                  <div class="recommendation-content">
+                    <p>
+                      Recent feedback from Baliuag customers shows high
+                      satisfaction with coffee quality (4.8/5) but requests for
+                      more local pastry options (3.2/5).
+                    </p>
+                  </div>
+                  <div class="recommendation-actions">
+                    <button class="btn btn-light btn-sm">
+                      See Full Report
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+  <script src="javascript/dashboard.js"></script>
+  </body>
+</html>

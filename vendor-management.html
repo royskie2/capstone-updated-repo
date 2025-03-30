@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VendorRoute - Vendor Management</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <link rel="stylesheet" href="stylesheet/dashboard.css" />
+    <link rel="stylesheet" href="stylesheet/vendor-management.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="container">
+        <nav class="navbar">
+          <div class="burger" id="mobileMenuToggle">≡</div>
+
+          <a href="index.html" class="logo">
+            <span class="logo-img">🚚</span>
+            <span>VendorRoute Admin</span>
+          </a>
+
+          <div></div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Dashboard -->
+    <main class="dashboard-page">
+      <div class="container">
+        <div class="dashboard-header">
+          <h1>Vendor Management</h1>
+          <div class="user-profile">
+            <div class="user-avatar">AD</div>
+            <div class="user-info">
+              <span class="user-name">Admin Dashboard</span>
+              <span class="user-role">System Administrator</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="dashboard-grid">
+          <!-- Sidebar - Integrated navigation -->
+          <aside class="sidebar" id="sidebar">
+            <ul class="sidebar-menu">
+              <li>
+                <a href="admin-dashboard.html"><i>📊</i> Dashboard</a>
+              </li>
+              <li>
+                <a href="vendor-management.html" class="active"
+                  ><i>🏪</i> Vendor Management</a
+                >
+              </li>
+              <li>
+                <a href="admin-dashboard.html#user-analytics"><i>👥</i> User Analytics</a>
+              </li>
+            </ul>
+
+            <div class="sidebar-divider"></div>
+
+            <ul class="sidebar-menu">
+              <li>
+                <a href="admin-settings.html"><i>⚙️</i> System Settings</a>
+              </li>
+              <li>
+                <a href="#security"><i>🔒</i> Security</a>
+              </li>
+              <li>
+                <a href="#user-activity"><i>🕹️</i> User Activity Logs</a>
+              </li>
+              <li>
+                <a href="index.html"><i>🏠</i>Log Out</a>
+              </li>
+            </ul>
+          </aside>
+
+          <!-- Main Content Area -->
+          <d class="main-content">
+            <!-- Vendor Summary Statistics -->
+            <div class="stats-cards">
+              <div class="stat-card">
+                <div class="stat-header">
+                  <span class="stat-title">Total Vendors</span>
+                  <span class="stat-icon">🏪</span>
+                </div>
+                <div class="stat-value">320</div>
+                <div class="stat-change positive">
+                  <span>↑ 8.3%</span> vs last month
+                </div>
+              </div>
+
+              <div class="stat-card">
+                <div class="stat-header">
+                  <span class="stat-title">Active Vendors</span>
+                  <span class="stat-icon">✅</span>
+                </div>
+                <div class="stat-value">305</div>
+                <div class="stat-change positive">
+                  <span>↑ 12.5%</span> new registrations
+                </div>
+              </div>
+
+              <div class="stat-card">
+                <div class="stat-header">
+                  <span class="stat-title">Pending Approval</span>
+                  <span class="stat-icon">⏳</span>
+                </div>
+                <div class="stat-value">15</div>
+                <div class="stat-change neutral">
+                  <span>Awaiting Review</span>
+                </div>
+              </div>
+
+              <div class="stat-card">
+                <div class="stat-header">
+                  <span class="stat-title">Suspended Vendors</span>
+                  <span class="stat-icon">🚫</span>
+                </div>
+                <div class="stat-value">5</div>
+                <div class="stat-change negative">
+                  <span>Policy Violations</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Vendor Applications -->
+            <div
+              class="vendor-applications ai-recommendations"
+              id="vendor-applications"
+            >
+              <div class="recommendations-header">
+                <h2 class="recommendations-title">Vendor Applications</h2>
+                <button class="btn btn-primary btn-sm">Review All</button>
+              </div>
+
+              <div class="recommendation-cards">
+                <div class="recommendation-card">
+                  <div class="recommendation-title">
+                    Miguel's Food Truck
+                    <span class="badge badge-pending">Pending Review</span>
+                  </div>
+                  <div class="recommendation-content">
+                    <p>Application submitted on March 20, 2025</p>
+                  </div>
+                  <div class="recommendation-actions">
+                    <button class="btn btn-secondary btn-sm">
+                      Review Details
+                    </button>
+                    <button class="btn btn-primary btn-sm">Approve</button>
+                  </div>
+                </div>
+                <div class="recommendation-card">
+                  <div class="recommendation-title">
+                    Healthy Bites Cafe
+                    <span class="badge badge-pending">Pending Review</span>
+                  </div>
+                  <div class="recommendation-content">
+                    <p>Application submitted on March 22, 2025</p>
+                  </div>
+                  <div class="recommendation-actions">
+                    <button class="btn btn-secondary btn-sm">
+                      Review Details
+                    </button>
+                    <button class="btn btn-primary btn-sm">Approve</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+
+          <!-- Add Vendor Button in Vendor List Section -->
+          <div class="vendor-management-section" id="vendor-list">
+            <div class="section-header">
+              <h2>Vendor List</h2>
+              <div class="section-controls">
+                <div class="search-filter">
+                  <input
+                    type="text"
+                    placeholder="Search vendors..."
+                    class="search-input"
+                  />
+                  <select class="category-select">
+                    <option>All Categories</option>
+                    <option>Shawarma Vendors</option>
+                    <option>Coffee Vendors</option>
+                    <option>Milktea Vendors</option>
+                  </select>
+                  <button class="btn btn-primary btn-sm">Filter</button>
+                </div>
+                <button class="btn btn-outline btn-sm view-all-btn">View All</button>
+                <!-- Add this button -->
+                <button class="btn btn-primary btn-sm" id="addVendorBtn">Add Vendor</button>
+              </div>
+            </div>
+            
+  <!-- Rest of vendor list table -->
+  <div class="vendor-table-container">
+   <!-- Modifications for the vendor table to be fully responsive -->
+<table class="vendor-table">
+  <thead>
+    <tr>
+      <th>Vendor Name</th>
+      <th>Category</th>
+      <th>Locations</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td data-label="Vendor Name">Crystal's Coffee Corner</td>
+      <td data-label="Category">Coffee Vendor</td>
+      <td data-label="Locations">Baliuag, SM Area</td>
+      <td data-label="Status"><span class="badge badge-success">Active</span></td>
+      <td data-label="Actions">
+        <button class="btn btn-light btn-sm">View</button>
+        <button class="btn btn-light btn-sm">Edit</button>
+      </td>
+    </tr>
+    <tr>
+      <td data-label="Vendor Name">Roadside Shawarma</td>
+      <td data-label="Category">Shawarma Vendor</td>
+      <td data-label="Locations">Public Market</td>
+      <td data-label="Status"><span class="badge badge-warning">Pending</span></td>
+      <td data-label="Actions">
+        <button class="btn btn-light btn-sm">View</button>
+        <button class="btn btn-light btn-sm">Approve</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+  </div>
+</div>
+
+<!-- Add Vendor Modal -->
+<div class="modal" id="addVendorModal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>Add New Vendor</h2>
+      <span class="modal-close" id="closeVendorModal">&times;</span>
+    </div>
+    <div class="modal-body">
+      <form id="addVendorForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="vendorName">Vendor Name</label>
+            <input type="text" id="vendorName" name="vendorName" required>
+          </div>
+          <div class="form-group">
+            <label for="vendorCategory">Category</label>
+            <select id="vendorCategory" name="vendorCategory" required>
+              <option value="">Select Category</option>
+              <option value="Coffee Vendor">Coffee Vendor</option>
+              <option value="Shawarma Vendor">Shawarma Vendor</option>
+              <option value="Milktea Vendor">Milktea Vendor</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="vendorLocation">Locations</label>
+            <input type="text" id="vendorLocation" name="vendorLocation" placeholder="e.g. Baliuag, SM Area" required>
+          </div>
+          <div class="form-group">
+            <label for="vendorStatus">Status</label>
+            <select id="vendorStatus" name="vendorStatus" required>
+              <option value="active">Active</option>
+              <option value="pending">Pending</option>
+              <option value="suspended">Suspended</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="vendorContact">Contact Person</label>
+            <input type="text" id="vendorContact" name="vendorContact">
+          </div>
+          <div class="form-group">
+            <label for="vendorPhone">Phone Number</label>
+            <input type="tel" id="vendorPhone" name="vendorPhone">
+          </div>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="vendorEmail">Email</label>
+            <input type="email" id="vendorEmail" name="vendorEmail">
+          </div>
+          <div class="form-group">
+            <label for="vendorTaxID">Tax ID/Business Number</label>
+            <input type="text" id="vendorTaxID" name="vendorTaxID">
+          </div>
+        </div>
+        
+        <div class="form-group full-width">
+          <label for="vendorDescription">Description</label>
+          <textarea id="vendorDescription" name="vendorDescription" rows="3"></textarea>
+        </div>
+        
+        <div class="form-actions">
+          <button type="button" class="btn btn-secondary" id="cancelAddVendor">Cancel</button>
+          <button type="submit" class="btn btn-primary">Add Vendor</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="javascript/vendor-management.js"></script>
+    <script src="javascript/admin-dashboard.js"></script>
+  </body>
+</html>

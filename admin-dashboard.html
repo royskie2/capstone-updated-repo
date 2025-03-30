@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VendorRoute - Admin Dashboard</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <link rel="stylesheet" href="stylesheet/dashboard.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="container">
+        <nav class="navbar">
+          <!-- Mobile menu button - now on the left -->
+          <div class="burger" id="mobileMenuToggle">≡</div>
+
+          <!-- Logo in the center on mobile -->
+          <a href="index.html" class="logo">
+            <span class="logo-img">🚚</span>
+            <span>VendorRoute Admin</span>
+          </a>
+
+          <!-- Empty div to help with grid layout on mobile -->
+          <div></div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Dashboard -->
+    <main class="dashboard-page">
+      <div class="container">
+        <div class="dashboard-header">
+          <h1>Admin Dashboard</h1>
+          <div class="user-profile">
+            <div class="user-avatar">AD</div>
+            <div class="user-info">
+              <span class="user-name">Admin Dashboard</span>
+              <span class="user-role">System Administrator</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="dashboard-grid">
+          <!-- Sidebar - Integrated navigation -->
+          <aside class="sidebar" id="sidebar">
+            <ul class="sidebar-menu">
+              <li>
+                <a href="admin-dashboard.html" class="active"
+                  ><i>📊</i> Dashboard</a
+                >
+              </li>
+              <li>
+                <a href="vendor-management.html"><i>🏪</i> Vendor Management</a>
+              </li>
+              <li>
+                <a href="#user-analytics"><i>👥</i> User Analytics</a>
+              </li>
+            </ul>
+
+            <div class="sidebar-divider"></div>
+
+            <ul class="sidebar-menu">
+              <li>
+                <a href="admin-settings.html"><i>⚙️</i> System Settings</a>
+              </li>
+              <li>
+                <a href="#security"><i>🔒</i> Security</a>
+              </li>
+              <li>
+                <a href="#user-activity"><i>🕹️</i> User Activity Logs</a>
+              </li>
+              <li>
+                <a href="index.html"><i>🏠</i>Log Out</a>
+              </li>
+            </ul>
+          </aside>
+
+          <!-- Main Content Area -->
+          <div class="main-content">
+            <!-- Date Filter -->
+            <div class="date-filter" id="dashboard">
+              <div class="date-range">
+                <input type="date" class="date-input" value="2025-03-23" />
+                <span>to</span>
+                <input type="date" class="date-input" value="2025-03-30" />
+                <button class="btn btn-primary btn-sm">Apply</button>
+              </div>
+              <div class="quick-filters">
+                <button class="btn btn-light btn-sm">Today</button>
+                <button class="btn btn-light btn-sm">This Week</button>
+                <button class="btn btn-light btn-sm">This Month</button>
+                <button class="btn btn-light btn-sm">Custom</button>
+              </div>
+            </div>
+
+            <!-- Platform Stats Summary -->
+            <div class="stats-cards">
+              <div class="stat-card">
+                <div class="stat-header">
+                  <span class="stat-title">Total Vendors</span>
+                  <span class="stat-icon">🏪</span>
+                </div>
+                <div class="stat-value">320</div>
+                <div class="stat-change positive">
+                  <span>↑ 8.3%</span> vs last month
+                </div>
+              </div>
+
+              <div class="stat-card">
+                <div class="stat-header">
+                  <span class="stat-title">Daily Route Optimizations</span>
+                  <span class="stat-icon">🗺️</span>
+                </div>
+                <div class="stat-value">187</div>
+                <div class="stat-change positive">
+                  <span>↑ 15.2%</span> vs yesterday
+                </div>
+              </div>
+
+              <div class="stat-card">
+                <div class="stat-header">
+                  <span class="stat-title">Active Users</span>
+                  <span class="stat-icon">👥</span>
+                </div>
+                <div class="stat-value">305</div>
+                <div class="stat-change positive">
+                  <span>↑ 6.2%</span> vs last month
+                </div>
+              </div>
+
+              <div class="stat-card">
+                <div class="stat-header">
+                  <span class="stat-title">Total Revenue</span>
+                  <span class="stat-icon">💰</span>
+                </div>
+                <div class="stat-value">₱580,000</div>
+                <div class="stat-change positive">
+                  <span>↑ 15.7%</span> vs last quarter
+                </div>
+              </div>
+            </div>
+
+            <!-- Vendor Management Section -->
+            <div class="optimization-section" id="vendor-management">
+              <div class="optimization-header">
+                <h2 class="optimization-title">Vendor Management</h2>
+                <button class="btn btn-primary">Add New Vendor</button>
+              </div>
+
+              <div class="vendor-summary">
+                <div class="vendor-stats">
+                  <div class="vendor-stat">
+                    <span>Active Vendors</span>
+                    <strong>305</strong>
+                  </div>
+                  <div class="vendor-stat">
+                    <span>Pending Approval</span>
+                    <strong>15</strong>
+                  </div>
+                  <div class="vendor-stat">
+                    <span>Suspended</span>
+                    <strong>5</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br />
+
+            <!-- User Analytics Section -->
+            <div class="data-section" id="user-analytics">
+              <div class="chart-container">
+                <div class="chart-header">
+                  <h3 class="chart-title">User Growth</h3>
+                </div>
+                <div class="chart-content">
+                  <canvas id="userGrowthChart"></canvas>
+                </div>
+              </div>
+
+              <div class="chart-container">
+                <div class="chart-header">
+                  <h3 class="chart-title">User Demographics</h3>
+                </div>
+                <div class="chart-content">
+                  <canvas id="userDemographicsChart"></canvas>
+                </div>
+              </div>
+            </div>
+            <script src="javascript/vendor-management.js"></script>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="javascript/admin-dashboard.js"></script>
+  </body>
+</html>

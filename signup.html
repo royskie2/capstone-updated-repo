@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VendorRoute - Sign Up</title>
+    <link rel="stylesheet" href="stylesheet/index.css" />
+    <link rel="stylesheet" href="stylesheet/signup.css".css">
+  </head>
+  <body>
+    <!-- Header with updated burger menu and logo -->
+    <header>
+      <div class="container">
+        <nav class="navbar">
+          <div class="burger" id="mobileMenuToggle">≡</div>
+          <a href="index.html" class="logo">
+            <span class="logo-img">🚚</span>
+            <span>VendorRoute</span>
+          </a>
+          <ul class="nav-menu">
+            <li><a href="index.html#home">Home</a></li>
+            <li><a href="index.html#features">Features</a></li>
+            <li><a href="index.html#how-it-works">How It Works</a></li>
+            <li><a href="index.html#testimonials">Testimonials</a></li>
+            <li><a href="login.html">Log In</a></li>
+            <li><a href="signup.html" class="active">Sign Up</a></li>
+          </ul>
+          <div></div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+      <ul class="sidebar-menu">
+        <li>
+          <a href="index.html#home"><i class="icon">🏠</i>Home</a>
+        </li>
+        <li>
+          <a href="index.html#features"><i class="icon">✨</i>Features</a>
+        </li>
+        <li>
+          <a href="index.html#how-it-works"><i class="icon">📋</i>How It Works</a>
+        </li>
+        <li>
+          <a href="index.html#testimonials"><i class="icon">💬</i>Testimonials</a>
+        </li>
+        <li class="sidebar-divider"></li>
+        <li>
+          <a href="login.html"><i class="icon">🔑</i>Log In</i></a>
+        </li>
+        <li>
+          <a href="signup.html" class="active"><i class="icon">📝</i>Sign Up</i></a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Overlay for mobile sidebar -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Signup Section -->
+    <section class="auth-section">
+      <div class="container">
+        <div class="auth-container">
+          <div class="auth-header">
+            <a href="index.html" class="logo">
+              <span class="logo-img">🚚</span>
+              <span>VendorRoute</span>
+            </a>
+            <h1>Create your VendorRoute account</h1>
+            <p>Join our community of successful food vendors in Baliuag, Bulacan</p>
+          </div>
+
+          <!-- Step Indicator -->
+          <div class="multi-step-indicator">
+            <div class="step active">
+              <div class="step-number">1</div>
+              <div class="step-label">Personal Information</div>
+            </div>
+            <div class="step">
+              <div class="step-number">2</div>
+              <div class="step-label">Business Details</div>
+            </div>
+            <div class="step">
+              <div class="step-number">3</div>
+              <div class="step-label">Verification</div>
+            </div>
+            <div class="step">
+              <div class="step-number">4</div>
+              <div class="step-label">Complete</div>
+            </div>
+          </div>
+
+          <form id="signupForm" action="dashboard.html" method="GET">
+            <!-- Step 1: Personal Information -->
+            <div class="form-step active" id="step1">
+              <div class="form-section">
+                <h3 class="form-section-title">Personal Information</h3>
+                
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
+                  </div>
+                </div>
+                
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="phoneNumber">Contact Number</label>
+                    <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Enter your mobile number" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+                  </div>
+                </div>
+                
+                <div class="form-group">
+                  <label for="profilePicture">Profile Picture <span class="label-optional">(optional)</span></label>
+                  <div class="file-upload">
+                    <div class="file-upload-btn">Click to upload a profile photo</div>
+                    <input type="file" id="profilePicture" name="profilePicture" accept="image/*">
+                  </div>
+                  <div class="file-selected" id="profilePictureSelected"></div>
+                </div>
+              </div>
+
+              <div class="form-section">
+                <h3 class="form-section-title">Account Details</h3>
+                
+                <div class="form-group">
+                  <label for="username">Username</label>
+                  <input type="text" id="username" name="username" placeholder="Choose a username" required>
+                </div>
+                
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Create a password" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password" required>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="step-controls-single">
+                <button type="button" class="btn-auth btn-step" id="step1Next">Continue</button>
+              </div>
+            </div>
+
+            <!-- Step 2: Business Information -->
+            <div class="form-step" id="step2">
+              <div class="form-section">
+                <h3 class="form-section-title">Business Information</h3>
+                
+                <div class="form-group">
+                  <label for="businessName">Business Name</label>
+                  <input type="text" id="businessName" name="businessName" placeholder="Enter your business name" required>
+                </div>
+                
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="businessType">Business Type</label>
+                    <select id="businessType" name="businessType" required>
+                      <option value="">Select your business type</option>
+                      <option value="coffee">Coffee Vendor</option>
+                      <option value="streetFood">Street Food</option>
+                      <option value="snacks">Snacks</option>
+                      <option value="desserts">Desserts</option>
+                      <option value="iceCream">Ice Cream</option>
+                      <option value="fruits">Fruits</option>
+                      <option value="taho">Taho Vendor</option>
+                      <option value="balut">Balut Vendor</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="businessPhone">Business Contact Number</label>
+                    <input type="tel" id="businessPhone" name="businessPhone" placeholder="Enter business contact number">
+                  </div>
+                </div>
+                
+                <div class="form-group">
+                  <label for="businessAddress">Business Address</label>
+                  <textarea id="businessAddress" name="businessAddress" placeholder="Enter your business address"></textarea>
+                </div>
+                
+                <div class="form-group">
+                  <label for="serviceAreas">Areas You Typically Serve</label>
+                  <textarea id="serviceAreas" name="serviceAreas" placeholder="e.g., SM Baliuag, Baliuag Public Market, Baliuag University, etc."></textarea>
+                </div>
+              </div>
+              
+              <div class="step-controls-multi">
+                <button type="button" class="btn-secondary btn-step" id="step2Prev">Back</button>
+                <button type="button" class="btn-auth btn-step" id="step2Next">Continue</button>
+              </div>
+            </div>
+
+            <!-- Step 3: Verification -->
+            <div class="form-step" id="step3">
+              <div class="form-section">
+                <h3 class="form-section-title">Identity Verification</h3>
+                
+                <div class="form-group">
+                  <label for="idUpload">Government-issued ID Upload</label>
+                  <div class="file-upload">
+                    <div class="file-upload-btn">Upload a valid ID (e.g., Driver's License, PhilID, Voter's ID)</div>
+                    <input type="file" id="idUpload" name="idUpload" accept="image/*" required>
+                  </div>
+                  <div class="file-selected" id="idUploadSelected"></div>
+                </div>
+                
+                <div class="form-group">
+                  <label for="selfieWithId">Selfie with ID for Verification</label>
+                  <div class="file-upload">
+                    <div class="file-upload-btn">Upload a photo of yourself holding your ID</div>
+                    <input type="file" id="selfieWithId" name="selfieWithId" accept="image/*" required>
+                  </div>
+                  <div class="file-selected" id="selfieWithIdSelected"></div>
+                </div>
+              </div>
+              
+              <div class="form-section">
+                <h3 class="form-section-title">Additional Information</h3>
+                
+                <div class="form-group">
+                  <label for="referralCode">Referral Code <span class="label-optional">(optional)</span></label>
+                  <input type="text" id="referralCode" name="referralCode" placeholder="Enter referral code if you have one">
+                </div>
+                
+                <div class="checkbox-group">
+                  <input type="checkbox" id="termsAgreement" name="termsAgreement" required>
+                  <label for="termsAgreement">
+                    I agree to the <a href="#">Terms of Service</a>, <a href="#">Privacy Policy</a>, and <a href="#">Community Guidelines</a> of VendorRoute.
+                  </label>
+                </div>
+                
+                <div class="checkbox-group">
+                  <input type="checkbox" id="marketingConsent" name="marketingConsent">
+                  <label for="marketingConsent">
+                    I want to receive updates about new features, tips, and special offers from VendorRoute.
+                  </label>
+                </div>
+              </div>
+              
+              <div class="step-controls-last">
+                <button type="button" class="btn-secondary btn-step" id="step3Prev">Back</button>
+                <button type="submit" class="btn-auth btn-step" id="completeSignup">Create Account</button>
+              </div>
+            </div>
+
+            <!-- Step 4: Success (Will be shown after form submission via JavaScript) -->
+            <div class="form-step" id="step4">
+              <div class="form-section" style="text-align: center;">
+                <div style="font-size: 72px; margin-bottom: 20px;">✅</div>
+                <h3 class="form-section-title">Registration Successful!</h3>
+                <p>Thank you for signing up with VendorRoute. Your account is being processed.</p>
+                <p>We'll review your information and notify you once your account is approved.</p>
+                <p>This usually takes 24-48 hours.</p>
+                
+                <div style="margin-top: 30px;">
+                  <a href="index.html" class="btn-auth" style="display: inline-block; text-decoration: none; width: auto; padding: 12px 25px;">Return to Homepage</a>
+                </div>
+              </div>
+            </div>
+          </form>
+
+          <div class="auth-footer">
+            <p>Already have an account? <a href="login.html">Log in</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- JavaScript for Form Functionality -->
+    <script src="javascript/signup.js"></script>
+  </body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VendorRoute - Login</title>
+    <link rel="stylesheet" href="stylesheet/index.css" />
+    <link rel="stylesheet" href="stylesheet/login.css">
+
+  </head>
+  <body>
+    <!-- Header with updated burger menu and logo -->
+    <header>
+      <div class="container">
+        <nav class="navbar">
+          <div class="burger" id="mobileMenuToggle">≡</div>
+          <a href="index.html" class="logo">
+            <span class="logo-img">🚚</span>
+            <span>VendorRoute</span>
+          </a>
+          <ul class="nav-menu">
+            <li><a href="index.html#home">Home</a></li>
+            <li><a href="index.html#features">Features</a></li>
+            <li><a href="index.html#how-it-works">How It Works</a></li>
+            <li><a href="index.html#testimonials">Testimonials</a></li>
+            <li><a href="login.html" class="active">Log In</a></li>
+            <li><a href="signup.html">Sign Up</a></li>
+          </ul>
+          <div></div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+      <ul class="sidebar-menu">
+        <li>
+          <a href="index.html#home"><i class="icon">🏠</i>Home</a>
+        </li>
+        <li>
+          <a href="index.html#features"><i class="icon">✨</i>Features</a>
+        </li>
+        <li>
+          <a href="index.html#how-it-works"><i class="icon">📋</i>How It Works</a>
+        </li>
+        <li>
+          <a href="index.html#testimonials"><i class="icon">💬</i>Testimonials</a>
+        </li>
+        <li class="sidebar-divider"></li>
+        <li>
+          <a href="login.html" class="active"><i class="icon">🔑</i>Log In</i></a>
+        </li>
+        <li>
+          <a href="signup.html"><i class="icon">📝</i>Sign Up</i></a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Overlay for mobile sidebar -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Login Section -->
+    <section class="auth-section">
+      <div class="container">
+        <div class="auth-container">
+          <div class="auth-header">
+            <a href="index.html" class="logo">
+              <span class="logo-img">🚚</span>
+              <span>VendorRoute</span>
+            </a>
+            <h1>Log in to your account</h1>
+            <p>Welcome back! Please enter your details to access your dashboard</p>
+          </div>
+
+          <form id="loginForm" action="business_setup.html" method="GET">
+            <div class="form-group">
+              <label for="username">Username or Email Address</label>
+              <input type="text" id="username" name="username" placeholder="Enter your username or email" required>
+            </div>
+
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            </div>
+
+            <div class="form-options">
+              <div class="remember-me">
+                <input type="checkbox" id="remember" name="remember">
+                <label for="remember">Remember me</label>
+              </div>
+              <a href="forgotpassword.html" class="forgot-password">Forgot password?</a>
+            </div>
+
+            <button type="submit" class="btn-auth">Log In</button>
+          </form>
+
+          <div class="auth-divider">
+            <span>or continue with</span>
+          </div>
+
+          <div class="social-login">
+            <div class="social-btn">G</div>
+            <div class="social-btn">f</div>
+            <div class="social-btn">in</div>
+          </div>
+
+          <div class="auth-footer">
+            <p>Don't have an account? <a href="signup.html">Sign up</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- JavaScript for sidebar toggle -->
+    <script src="javascript/login.js"></script>
+    <script src="javascript/dashboard.js"></script>
+  </body>
+</html>

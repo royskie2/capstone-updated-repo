@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome to VendorRoute - Complete Your Setup</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <link rel="stylesheet" href="stylesheet/business_setup.css" />
+    <link rel="stylesheet" href="stylesheet/dashboard.css">
+  </head>
+  <body>
+     <!-- Header -->
+     <header>
+      <div class="container">
+        <nav class="navbar">
+          <!-- Mobile menu button - now on the left -->
+          <div class="burger" id="mobileMenuToggle">≡</div>
+
+          <!-- Logo in the center on mobile -->
+          <a href="index.html" class="logo">
+            <span class="logo-img">🚚</span>
+            <span>VendorRoute</span>
+          </a>
+
+          <!-- Empty div to help with grid layout on mobile -->
+          <div></div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Dashboard -->
+    <main class="dashboard-page">
+      <div class="container">
+        <div class="dashboard-header">
+          <h1>Welcome back, Crystal!</h1>
+          <div class="user-profile">
+            <div class="user-avatar">CJ</div>
+            <div class="user-info">
+              <span class="user-name">Crystal Joy Cantos</span>
+              <span class="user-role">Coffee Vendor</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="dashboard-grid">
+          <!-- Sidebar - Integrated navigation -->
+          <aside class="sidebar" id="sidebar">
+            <ul class="sidebar-menu">
+              <li>
+                <a href="dashboard.html"><i>📊</i> Dashboard</a>
+              </li>
+              <li>
+                <a href="business_setup.html" class="active"><i>🏪</i> Business Setup</a>
+              </li>
+              <li>
+                <a href="dashboard.html#route-planning"><i>🗺️</i> Route Planning</a>
+              </li>
+              <li>
+                <a href="dashboard.html#location-analytics"><i>📍</i> Location Analytics</a>
+              </li>
+              <li>
+                <a href="dashboard.html#sales-tracking"><i>📈</i> Sales Tracking</a>
+              </li>
+              <li>
+                <a href="dashboard.html#weather-forecast"><i>☁️</i> Weather Forecast</a>
+              </li>
+            </ul>
+
+            <div class="sidebar-divider"></div>
+
+            <ul class="sidebar-menu">
+              <li>
+                <a href="dashboard.html#customer-insights"><i>👥</i> Customer Insights</a>
+              </li>
+              <li>
+                <a href="dashboard.html#ai-recommendations"><i>🤖</i> AI Recommendations</a>
+              </li>
+              <li>
+                <a href="dashboard.html#dynamic-pricing"><i>💰</i> Dynamic Pricing</a>
+              </li>
+              <li>
+                <a href="settings.html"><i>⚙️</i> Settings</a>
+              </li>
+              <li>
+                <a href="#help-center"><i>❓</i> Help Center</a>
+              </li>
+              <li>
+                <a href="index.html"><i>🏠</i>Log Out</a>
+              </li>
+            </ul>
+          </aside>
+
+          <div class="main-content">
+            <!-- Welcome Banner -->
+            <div class="welcome-banner" id="dashboard">
+              <h1>Welcome to VendorRoute, Coffee Joy!</h1>
+              <p>
+                Complete your profile setup to start receiving personalized
+                route and sales predictions for your coffee vending business in
+                Baliuag.
+              </p>
+            </div>
+
+            <!-- Progress Section -->
+            <div class="progress-section">
+              <div class="section-header">
+                <h2>Setup Progress</h2>
+                <p>Complete these steps to get the most out of VendorRoute</p>
+              </div>
+              <div class="progress-container">
+                <div class="progress-bar"></div>
+              </div>
+              <p>1 of 4 steps completed (25%)</p>
+            </div>
+
+            <!-- Setup Checklist -->
+            <div class="setup-checklist">
+              <div class="checklist-item">
+                <div class="checklist-icon completed">✓</div>
+                <div class="checklist-content">
+                  <h3 class="checklist-title">Sign Up</h3>
+                  <p class="checklist-description">
+                    Create your account with basic business information
+                  </p>
+                </div>
+                <div class="checklist-action">
+                  <span>Completed</span>
+                </div>
+              </div>
+
+              <div class="checklist-item" id="business-setup">
+                <div class="checklist-icon">2</div>
+                <div class="checklist-content">
+                  <h3 class="checklist-title">Business Details</h3>
+                  <p class="checklist-description">
+                    Add your menu items, operating hours, and equipment details
+                  </p>
+                </div>
+                <div class="checklist-action">
+                  <button class="btn btn-primary btn-sm">Start Now</button>
+                </div>
+              </div>
+
+              <div class="checklist-item" id="locations">
+                <div class="checklist-icon">3</div>
+                <div class="checklist-content">
+                  <h3 class="checklist-title">Track Sales & Locations</h3>
+                  <p class="checklist-description">
+                    Log your daily sales and locations to build your prediction
+                    model
+                  </p>
+                </div>
+                <div class="checklist-action">
+                  <button class="btn btn-light btn-sm">Next Step</button>
+                </div>
+              </div>
+
+              <div class="checklist-item" id="routes">
+                <div class="checklist-icon">4</div>
+                <div class="checklist-content">
+                  <h3 class="checklist-title">Get Predictions</h3>
+                  <p class="checklist-description">
+                    Receive personalized route recommendations
+                  </p>
+                </div>
+                <div class="checklist-action">
+                  <button class="btn btn-light btn-sm">Coming Soon</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Business Details Form Section -->
+            <div class="form-section">
+              <div class="section-header">
+                <h2>Complete Your Business Profile</h2>
+                <p>
+                  Help us understand your business better to provide accurate
+                  predictions
+                </p>
+              </div>
+
+              <form>
+                <h3>Menu Items</h3>
+                <p>Add the products you sell with their prices</p>
+                <div class="form-grid">
+                  <div class="form-group">
+                    <label for="product1">Product Name</label>
+                    <input
+                      type="text"
+                      id="product1"
+                      class="form-control"
+                      placeholder="e.g., Iced Latte"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="price1">Price (₱)</label>
+                    <input
+                      type="number"
+                      id="price1"
+                      class="form-control"
+                      placeholder="e.g., 95"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="category1">Category</label>
+                    <select id="category1" class="form-control">
+                      <option>Hot Coffee</option>
+                      <option>Cold Coffee</option>
+                      <option>Food</option>
+                      <option>Other</option>
+                    </select>
+                  </div>
+                </div>
+                <button type="button" class="btn btn-light btn-sm">
+                  + Add Another Product
+                </button>
+
+                <h3 class="mt-4">Operating Information</h3>
+                <div class="form-grid">
+                  <div class="form-group">
+                    <label for="operatingDays">Operating Days</label>
+                    <select id="operatingDays" class="form-control" multiple>
+                      <option selected>Monday</option>
+                      <option selected>Tuesday</option>
+                      <option selected>Wednesday</option>
+                      <option selected>Thursday</option>
+                      <option selected>Friday</option>
+                      <option>Saturday</option>
+                      <option>Sunday</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="startTime">Start Time</label>
+                    <input
+                      type="time"
+                      id="startTime"
+                      class="form-control"
+                      value="07:00"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="endTime">End Time</label>
+                    <input
+                      type="time"
+                      id="endTime"
+                      class="form-control"
+                      value="17:00"
+                    />
+                  </div>
+                </div>
+
+                <h3 class="mt-4">Equipment Details</h3>
+                <div class="form-grid">
+                  <div class="form-group">
+                    <label for="vehicleType">Vehicle/Cart Type</label>
+                    <select id="vehicleType" class="form-control">
+                      <option>Motorbike with Sidecar</option>
+                      <option>Tricycle</option>
+                      <option selected>Food Cart</option>
+                      <option>Small Truck</option>
+                      <option>Other</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="capacity">Daily Capacity (servings)</label>
+                    <input
+                      type="number"
+                      id="capacity"
+                      class="form-control"
+                      placeholder="e.g., 150"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="staff">Number of Staff</label>
+                    <input
+                      type="number"
+                      id="staff"
+                      class="form-control"
+                      placeholder="e.g., 2"
+                    />
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <button type="button" class="btn btn-primary">
+                    Save Business Details
+                  </button>
+                </div>
+              </form>
+            </div>
+
+            <!-- Location History Section -->
+            <div class="form-section" id="sales-tracking">
+              <div class="section-header">
+                <h2>Your Selling Locations</h2>
+                <p>Tell us where you typically sell your products</p>
+              </div>
+
+              <div class="map-container">
+                <div class="map-placeholder">
+                  <span>🗺️</span>
+                  <p>
+                    Interactive map of Baliuag, Bulacan<br />Click to add your
+                    common selling locations
+                  </p>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="locationName">Location Name</label>
+                <input
+                  type="text"
+                  id="locationName"
+                  class="form-control"
+                  placeholder="e.g., SM Baliuag Entrance"
+                />
+              </div>
+
+              <div class="form-grid">
+                <div class="form-group">
+                  <label for="bestDays">Best Days</label>
+                  <select id="bestDays" class="form-control" multiple>
+                    <option>Monday</option>
+                    <option>Tuesday</option>
+                    <option>Wednesday</option>
+                    <option>Thursday</option>
+                    <option>Friday</option>
+                    <option>Saturday</option>
+                    <option>Sunday</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="bestHours">Best Hours</label>
+                  <select id="bestHours" class="form-control" multiple>
+                    <option>Morning (6-9 AM)</option>
+                    <option>Mid-Morning (9-11 AM)</option>
+                    <option>Lunch (11 AM-1 PM)</option>
+                    <option>Afternoon (1-4 PM)</option>
+                    <option>Evening (4-7 PM)</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="avgRevenue">Average Daily Revenue (₱)</label>
+                  <input
+                    type="number"
+                    id="avgRevenue"
+                    class="form-control"
+                    placeholder="e.g., 1200"
+                  />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <button type="button" class="btn btn-primary">
+                  Add Location
+                </button>
+              </div>
+            </div>
+
+            <!-- Initial Analytics Section -->
+            <div class="form-section">
+              <div class="section-header">
+                <h2>Your First Analytics</h2>
+                <p>Start logging sales to see your data come to life</p>
+              </div>
+
+              <div class="sample-stats">
+                <div class="stat-card">
+                  <div class="stat-header">
+                    <span class="stat-title">Awaiting First Sale</span>
+                    <span class="stat-icon">💰</span>
+                  </div>
+                  <div class="stat-value">₱0</div>
+                  <span class="stat-label">No sales data yet</span>
+                </div>
+
+                <div class="stat-card">
+                  <div class="stat-header">
+                    <span class="stat-title">Customers</span>
+                    <span class="stat-icon">👥</span>
+                  </div>
+                  <div class="stat-value">0</div>
+                  <span class="stat-label">No customer data yet</span>
+                </div>
+
+                <div class="stat-card">
+                  <div class="stat-header">
+                    <span class="stat-title">Locations</span>
+                    <span class="stat-icon">📍</span>
+                  </div>
+                  <div class="stat-value">0</div>
+                  <span class="stat-label">No locations added yet</span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <button type="button" class="btn btn-primary">
+                  Log Your First Sale
+                </button>
+              </div>
+            </div>
+
+            <!-- Predictions Preview Section -->
+            <div class="prediction-demo">
+              <div class="prediction-header">
+                <h2>How Predictions Will Look</h2>
+                <span class="prediction-badge">Sample Data</span>
+              </div>
+              <p>
+                After logging 7-14 days of sales data, you'll receive AI-powered
+                predictions like these:
+              </p>
+
+              <h3 class="mt-4">Sample Optimal Route</h3>
+              <div class="sample-route">
+                <div class="map-placeholder">
+                  <span>🗺️</span>
+                  <p>
+                    Sample route: SM Baliuag → Baliuag Plaza → Public Market
+                  </p>
+                </div>
+              </div>
+
+              <h3>Sample Revenue Forecast</h3>
+              <div class="sample-stats">
+                <div class="stat-card">
+                  <div class="stat-header">
+                    <span class="stat-title">SM Baliuag</span>
+                    <span class="stat-icon">📈</span>
+                  </div>
+                  <div class="stat-value">₱1,250</div>
+                  <span class="stat-label">Forecasted Revenue</span>
+                </div>
+
+                <div class="stat-card">
+                  <div class="stat-header">
+                    <span class="stat-title">Baliuag Plaza</span>
+                    <span class="stat-icon">📈</span>
+                  </div>
+                  <div class="stat-value">₱980</div>
+                  <span class="stat-label">Forecasted Revenue</span>
+                </div>
+
+                <div class="stat-card">
+                  <div class="stat-header">
+                    <span class="stat-title">Public Market</span>
+                    <span class="stat-icon">📈</span>
+                  </div>
+                  <div class="stat-value">₱850</div>
+                  <span class="stat-label">Forecasted Revenue</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Learning Resources Section -->
+            <div class="form-section" id="learn">
+              <div class="section-header">
+                <h2>Learning Resources</h2>
+                <p>Get the most out of VendorRoute</p>
+              </div>
+
+              <div class="learn-cards">
+                <div class="learn-card">
+                  <div class="learn-card-img">
+                    <span>🎓</span>
+                  </div>
+                  <div class="learn-card-content">
+                    <h3 class="learn-card-title">Getting Started Guide</h3>
+                    <p>
+                      Learn the basics of VendorRoute and how to set up your
+                      account properly.
+                    </p>
+                    <a href="#" class="btn btn-light btn-sm mt-3"
+                      >Watch Video</a
+                    >
+                  </div>
+                </div>
+
+                <div class="learn-card">
+                  <div class="learn-card-img">
+                    <span>📊</span>
+                  </div>
+                  <div class="learn-card-content">
+                    <h3 class="learn-card-title">Understanding Analytics</h3>
+                    <p>
+                      Learn how to interpret your sales data and use the
+                      insights to grow your business.
+                    </p>
+                    <a href="#" class="btn btn-light btn-sm mt-3">Read Guide</a>
+                  </div>
+                </div>
+
+                <div class="learn-card">
+                  <div class="learn-card-img">
+                    <span>🗺️</span>
+                  </div>
+                  <div class="learn-card-content">
+                    <h3 class="learn-card-title">Route Optimization</h3>
+                    <p>
+                      Discover how our AI helps you find the most profitable
+                      selling locations and routes.
+                    </p>
+                    <a href="#" class="btn btn-light btn-sm mt-3">Learn More</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Help & Support Section -->
+            <div class="form-section" id="help">
+              <div class="section-header">
+                <h2>Help & Support</h2>
+                <p>We're here to help you succeed</p>
+              </div>
+
+              <div class="support-options">
+                <div class="support-card">
+                  <div class="support-card-icon">📱</div>
+                  <h3>Chat Support</h3>
+                  <p>Get immediate help from our team through live chat.</p>
+                  <button class="btn btn-primary btn-sm">Start Chat</button>
+                </div>
+
+                <div class="support-card">
+                  <div class="support-card-icon">📧</div>
+                  <h3>Email Us</h3>
+                  <p>Send us an email and we'll respond within 24 hours.</p>
+                  <a
+                    href="mailto:support@vendorroute.com"
+                    class="btn btn-light btn-sm"
+                    >Email Support</a
+                  >
+                </div>
+
+                <div class="support-card">
+                  <div class="support-card-icon">📚</div>
+                  <h3>FAQ</h3>
+                  <p>Find answers to commonly asked questions.</p>
+                  <a href="#" class="btn btn-light btn-sm">View FAQ</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Mobile menu backdrop -->
+    <div class="mobile-backdrop" id="mobileBackdrop"></div>
+
+    <!-- JavaScript -->
+    <script src="javascript/business_setup.js"></script>
+  </body>
+</html>

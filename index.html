@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VendorRoute - Smart Route Planning for Food Vendors</title>
+    <link rel="stylesheet" href="stylesheet/index.css" />
+  </head>
+  <body>
+    <!-- Header with updated burger menu and logo -->
+    <header>
+      <div class="container">
+        <nav class="navbar">
+          <!-- Mobile menu button - now on the left -->
+
+          <!-- Replace the sidebar toggle button in your header section with this -->
+          <div class="burger" id="mobileMenuToggle">≡</div>
+
+          <!-- Logo in the center on mobile -->
+          <a href="index.html" class="logo">
+            <span class="logo-img">🚚</span>
+            <span>VendorRoute</span>
+          </a>
+          <ul class="nav-menu">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#how-it-works">How It Works</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="login.html">Log In</a></li>
+            <li><a href="signup.html">Sign Up</a></li>
+          </ul>
+          <!-- Empty div to help with grid layout on mobile -->
+          <div></div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Make sure your sidebar HTML looks like this -->
+    <div class="sidebar" id="sidebar">
+      <ul class="sidebar-menu">
+        <li>
+          <a href="#home"><i class="icon">🏠</i>Home</a>
+        </li>
+        <li>
+          <a href="#features"><i class="icon">✨</i>Features</a>
+        </li>
+        <li>
+          <a href="#how-it-works"><i class="icon">📋</i>How It Works</a>
+        </li>
+        <li>
+          <a href="#testimonials"><i class="icon">💬</i>Testimonials</a>
+        </li>
+        <li class="sidebar-divider"></li>
+        <li>
+          <a href="login.html"><i class="icon">🔑</i>Log In</i></a>
+        </li>
+        <li>
+            <a href="signup.html"><i class="icon">📝</i>Sign Up</i></a>
+          </li>
+      </ul>
+    </div>
+
+    <!-- Make sure you have the overlay element -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <h1>Smart Route Planning for Roaming Food Vendors</h1>
+          <p>
+            Maximize your sales and minimize travel with data-driven route
+            optimization. Stop guessing, start succeeding.
+          </p>
+          <a href="login.html" class="btn btn-primary">Get Started</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Powerful Features</h2>
+          <p>Everything you need to run your food vending business smarter</p>
+        </div>
+        <div class="features">
+          <div class="feature-card">
+            <div class="feature-icon">🔍</div>
+            <h3>Predictive Analytics</h3>
+            <p>
+              Using historical data and real-time conditions to predict where
+              your customers will be and when.
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🗺️</div>
+            <h3>Route Optimization</h3>
+            <p>
+              Plan the most efficient routes to maximize your sales while
+              minimizing travel time and fuel costs.
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">☁️</div>
+            <h3>Weather Integration</h3>
+            <p>
+              Automatically adjust your route based on weather forecasts to find
+              the best selling spots.
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">👥</div>
+            <h3>Foot Traffic Analysis</h3>
+            <p>
+              Know where crowds gather throughout the day to position yourself
+              for maximum visibility.
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">📈</div>
+            <h3>Sales Forecasting</h3>
+            <p>
+              Prepare the right amount of inventory based on predicted demand to
+              reduce waste.
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">📱</div>
+            <h3>Mobile Friendly</h3>
+            <p>
+              Access all features on your smartphone for on-the-go decision
+              making.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dashboard Preview Section -->
+    <section class="dashboard-preview">
+      <div class="container">
+        <div class="dashboard-content">
+          <div class="dashboard-text">
+            <h2>Smart Dashboard</h2>
+            <p>
+              Our intuitive dashboard puts all the information you need at your
+              fingertips. See predicted hot spots, optimal routes, and sales
+              forecasts at a glance.
+            </p>
+            <p>
+              Make data-driven decisions that increase your daily revenue while
+              saving time and reducing waste.
+            </p>
+            <br />
+            <a href="#" class="btn btn-light">Try the Demo</a>
+          </div>
+          <div class="dashboard-image">
+            <img src="picture/dashboard.png" alt="Dashboard Preview" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="how-it-works">
+      <div class="container">
+        <div class="section-header">
+          <h2>How It Works</h2>
+          <p>Getting started is easy</p>
+        </div>
+        <div class="steps">
+          <div class="step">
+            <div class="step-number">1</div>
+            <h3>Sign Up</h3>
+            <p>
+              Create your account and input basic information about your food
+              vending business.
+            </p>
+          </div>
+          <div class="step">
+            <div class="step-number">2</div>
+            <h3>Track Sales</h3>
+            <p>
+              Log your daily sales and locations to build your personalized
+              prediction model.
+            </p>
+          </div>
+          <div class="step">
+            <div class="step-number">3</div>
+            <h3>Get Predictions</h3>
+            <p>
+              Receive daily route recommendations based on predictive analytics.
+            </p>
+          </div>
+          <div class="step">
+            <div class="step-number">4</div>
+            <h3>Boost Profits</h3>
+            <p>
+              Follow the optimized routes and watch your sales increase while
+              expenses decrease.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+      <div class="container">
+        <div class="section-header">
+          <h2>What Vendors Say</h2>
+          <p>Success stories from food vendors in Baliuag</p>
+        </div>
+        <div class="testimonial-cards">
+          <div class="testimonial-card">
+            <p class="testimonial-text">
+              "Since using VendorRoute, my daily sales have increased by 30%
+              while I'm spending less time on the road. The predictions are
+              incredibly accurate!"
+            </p>
+            <p class="testimonial-author">- Juan Dela Cruz, Taho Vendor</p>
+          </div>
+          <div class="testimonial-card">
+            <p class="testimonial-text">
+              "I used to waste so much food at the end of each day. Now I know
+              exactly how much to prepare and where to sell it. Game changer for
+              my small business."
+            </p>
+            <p class="testimonial-author">- Maria Santos, Street Food Vendor</p>
+          </div>
+          <div class="testimonial-card">
+            <p class="testimonial-text">
+              "The weather predictions and event integration are spot on! I'm
+              always in the right place at the right time now, even during
+              unexpected rain or community events."
+            </p>
+            <p class="testimonial-author">- Pedro Reyes, Ice Cream Vendor</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="cta">
+      <div class="container">
+        <h2>Ready to Revolutionize Your Vending Business?</h2>
+        <p>
+          Join hundreds of food vendors in Baliuag who are already using
+          data-driven decisions to maximize their profits and reduce waste.
+        </p>
+        <a href="#" class="btn btn-light">Get Started Today</a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-column">
+            <h3>VendorRoute</h3>
+            <p>
+              Smart route planning and sales optimization for roaming food
+              vendors in Baliuag, Bulacan.
+            </p>
+          </div>
+          <div class="footer-column">
+            <h3>Quick Links</h3>
+            <ul class="footer-links">
+              <li><a href="#home">Home</a></li>
+              <li><a href="#features">Features</a></li>
+              <li><a href="#how-it-works">How It Works</a></li>
+              <li><a href="#testimonials">Testimonials</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3>Resources</h3>
+            <ul class="footer-links">
+              <li><a href="#">Help Center</a></li>
+              <li><a href="#">User Guide</a></li>
+              <li><a href="#">API Documentation</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3>Contact Us</h3>
+            <ul class="footer-links">
+              <li>
+                <a href="mailto:info@vendorroute.com">info@vendorroute.com</a>
+              </li>
+              <li><a href="tel:+639123456789">+63 912 345 6789</a></li>
+              <li>Bulacan State University</li>
+              <li>Bustos Campus, Bulacan</li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>
+            &copy; 2025 VendorRoute. A capstone project by Group 3-4, Bulacan
+            State University.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Overlay for mobile sidebar -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- JavaScript for sidebar toggle -->
+    <script src="javascript/index.js"></script>
+  </body>
+</html>
